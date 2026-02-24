@@ -14,7 +14,8 @@ import {
   translations
 } from "./content/translations.js";
 
-const formId = import.meta.env.VITE_FORMSPREE_FORM_ID;
+const formIdRaw = import.meta.env.VITE_FORMSPREE_FORM_ID?.trim() ?? "";
+const formId = formIdRaw.replace(/^https:\/\/formspree\.io\/f\//, "");
 
 function FormspreeForm({ formId, t }) {
   const [state, handleSubmit] = useForm(formId);

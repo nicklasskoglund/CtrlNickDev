@@ -154,7 +154,8 @@ export const translations = {
       name: "Namn",
       email: "E-post",
       message: "Meddelande",
-      formHint: "Formulär visas endast när VITE_FORMSPREE_FORM_ID är satt.",
+      formHint:
+        "Sätt VITE_FORMSPREE_FORM_ID i .env.local (lokalt) och i GitHub Secrets (deploy) för att visa formuläret.",
       thanks: "Tack! Ditt meddelande är skickat."
     }
   },
@@ -310,7 +311,8 @@ export const translations = {
       name: "Name",
       email: "Email",
       message: "Message",
-      formHint: "The form is shown only when VITE_FORMSPREE_FORM_ID is set.",
+      formHint:
+        "Set VITE_FORMSPREE_FORM_ID in .env.local (local) and GitHub Secrets (deploy) to display the form.",
       thanks: "Thanks! Your message has been sent."
     }
   }

@@ -27,6 +27,18 @@ Deployment is handled by `.github/workflows/deploy.yml` on push to `main`.
 
 The workflow builds Vite and deploys the generated `dist/` artifact to Pages.
 
-Optional secret for contact form:
+## Contact form setup (Formspree)
+
+1. Create a `.env.local` file in the project root:
+
+```bash
+VITE_FORMSPREE_FORM_ID=your_formspree_form_id
+```
+
+You can also start from `.env.example`.
+
+2. For GitHub Pages deploy, add this repository secret:
 
 - `VITE_FORMSPREE_FORM_ID`
+
+Note: The value can be either the Form ID (example `mxabc123`) or a full Formspree URL (`https://formspree.io/f/mxabc123`).
