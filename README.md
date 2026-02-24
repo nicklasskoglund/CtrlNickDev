@@ -1,8 +1,24 @@
-﻿# nicklasskoglund.github.io
+# Nicklas Skoglund Portfolio
 
-One-page portfolio built with Vite + React + Tailwind + Framer Motion.
+Personal portfolio site built to present projects, education, tech stack, and contact links in a clean one-page layout.
 
-## Local run
+## Built with
+
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Formspree (contact form handling)
+
+## Features
+
+- One-page portfolio with smooth section navigation
+- Swedish and English language toggle
+- Project cards with detailed modal views
+- Education timeline with expandable details
+- Contact section with social links and Formspree form integration
+
+## Local development
 
 ```bash
 npm ci
@@ -15,30 +31,3 @@ npm run dev
 npm run build
 npm run preview
 ```
-
-## GitHub Pages deploy
-
-Deployment is handled by `.github/workflows/deploy.yml` on push to `main`.
-
-1. Open repository `Settings`.
-2. Open `Pages`.
-3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
-4. Push to `main` or run `Deploy Pages` manually from `Actions`.
-
-The workflow builds Vite and deploys the generated `dist/` artifact to Pages.
-
-## Contact form setup (Formspree)
-
-1. Create a `.env.local` file in the project root:
-
-```bash
-VITE_FORMSPREE_FORM_ID=your_formspree_form_id
-```
-
-You can also start from `.env.example`.
-
-2. For GitHub Pages deploy, add this repository secret:
-
-- `VITE_FORMSPREE_FORM_ID`
-
-Note: The value can be either the Form ID (example `mxabc123`) or a full Formspree URL (`https://formspree.io/f/mxabc123`).
