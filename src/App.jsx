@@ -1,4 +1,5 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+// Huvudfilen som sätter ihop hela sidan.
 import { useForm } from "@formspree/react";
 import { motion } from "framer-motion";
 import Modal from "./components/Modal.jsx";
@@ -14,12 +15,15 @@ import {
   translations
 } from "./content/translations.js";
 
+// Hämtar id för kontaktformuläret om det finns.
 const formIdRaw = import.meta.env.VITE_FORMSPREE_FORM_ID?.trim() ?? "";
 const formId = formIdRaw.replace(/^https:\/\/formspree\.io\/f\//, "");
 
+// Kontaktformuläret.
 function FormspreeForm({ formId, t }) {
   const [state, handleSubmit] = useForm(formId);
 
+  // Padding växer på större skärmar för mer luft.
   return (
     <form
       onSubmit={handleSubmit}
@@ -76,11 +80,13 @@ export default function App() {
 
   const t = translations[lang];
 
+  // Bygger menylänkar från översättningarna.
   const navItems = useMemo(
     () => sections.map((id) => ({ id, label: t.nav[id] })),
     [t.nav]
   );
 
+  // Håller koll på vilken sektion som syns mest.
   useEffect(() => {
     const observers = sections
       .map((id) => document.getElementById(id))
@@ -103,6 +109,7 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Skrollar mjukt till vald sektion.
   const scrollToSection = (id) => {
     const node = document.getElementById(id);
     if (node) {
@@ -112,12 +119,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Mjuk bakgrund som ligger bakom allt innehåll. */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-28 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-cyan-500/15 blur-[120px]" />
         <div className="absolute top-[35%] left-[8%] h-72 w-72 rounded-full bg-blue-500/10 blur-[120px]" />
         <div className="absolute right-[5%] bottom-[8%] h-80 w-80 rounded-full bg-emerald-500/10 blur-[130px]" />
       </div>
 
+      {/* Toppmeny med språkväxling och mobilmeny. */}
       <Navbar
         navItems={navItems}
         activeId={activeSection}
@@ -128,7 +137,10 @@ export default function App() {
         onScrollTo={scrollToSection}
       />
 
+      {/* Innehållet, maxbredd och mer luft på större skärmar. */}
       <main className="mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-16 pt-10 md:gap-32 md:px-6 md:pb-24 md:pt-14">
+        {/* Startsida med notis, namn och knappar. */}
+        {/* Tätt på små skärmar, mer luft på större och vid högre höjd. */}
         <section
           id="home"
           className="scroll-mt-28 flex min-h-screen flex-col items-center gap-6 pb-10 pt-4 text-center sm:gap-8 sm:pb-12 sm:pt-6 md:gap-10 md:pb-16 [@media(max-height:700px)]:gap-4 [@media(max-height:700px)]:pb-8 [@media(max-height:700px)]:pt-2"
@@ -145,6 +157,7 @@ export default function App() {
             </div>
           </motion.div>
 
+          {/* Själva huvudtexten med namn och kort intro. */}
           <motion.div
             initial="hidden"
             animate="show"
@@ -155,6 +168,7 @@ export default function App() {
             className="flex w-full flex-1 flex-col items-center justify-center px-4"
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}>
+              {/* Rubriken skalar upp på större skärmar. */}
               <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-6xl">
                 {t.hero.greeting}
               </h1>
@@ -164,6 +178,7 @@ export default function App() {
               <p className="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base md:text-lg [@media(max-height:700px)]:mt-2">
                 {t.hero.intro}
               </p>
+              {/* Knappstorlek och avstånd anpassas för små skärmar. */}
               <div className="mt-6 flex flex-wrap justify-center gap-2 sm:mt-8 sm:gap-3 [@media(max-height:700px)]:mt-4">
                 <button
                   type="button"
@@ -184,6 +199,7 @@ export default function App() {
           </motion.div>
         </section>
 
+        {/* Om mig. */}
         <Section
           id="about"
           title={t.about.title}
@@ -191,6 +207,7 @@ export default function App() {
         >
           <div className="mt-6 grid gap-6 md:gap-8 md:grid-cols-[300px_1fr] md:items-center">
             <div className="mx-auto w-48 overflow-hidden rounded-3xl border border-white/10 bg-black/35 sm:w-56 md:mx-0 md:w-[300px]">
+              {/* Bilden skalar upp på större skärmar. */}
               <img
                 src={profileImage}
                 alt={t.about.title}
@@ -202,6 +219,7 @@ export default function App() {
           </div>
         </Section>
 
+        {/* Utbildning. */}
         <Section
           id="education"
           title={t.education.title}
@@ -240,6 +258,7 @@ export default function App() {
           </div>
         </Section>
 
+        {/* Kompetenser. */}
         <Section
           id="stack"
           title={t.stack.title}
@@ -267,6 +286,7 @@ export default function App() {
           </div>
         </Section>
 
+        {/* Projekt. */}
         <Section
           id="projects"
           title={t.projects.title}
@@ -284,6 +304,7 @@ export default function App() {
           </div>
         </Section>
 
+        {/* GitHub. */}
         <Section
           id="activity"
           title={t.activity.title}
@@ -311,6 +332,7 @@ export default function App() {
           </div>
         </Section>
 
+        {/* Kontakt. */}
         <Section
           id="contact"
           title={t.contact.title}
@@ -347,10 +369,12 @@ export default function App() {
         </Section>
       </main>
 
+      {/* Sidfot. */}
       <footer className="border-t border-white/10 py-6 text-center text-xs uppercase tracking-[0.25em] text-slate-500">
         © {new Date().getFullYear()} Nicklas Skoglund
       </footer>
 
+      {/* Modal för projekt. */}
       <Modal
         open={Boolean(selectedProject)}
         title={selectedProject?.name || ""}
@@ -387,6 +411,7 @@ export default function App() {
         ) : null}
       </Modal>
 
+      {/* Modal för utbildning. */}
       <Modal
         open={Boolean(selectedEducation)}
         title={selectedEducation?.program || ""}

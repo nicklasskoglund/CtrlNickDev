@@ -1,7 +1,10 @@
 ﻿export default function ProjectCard({ project, onOpen, detailsLabel }) {
+  // Kort som visar ett projekt och öppnar detaljerna.
   return (
     <article className="rounded-3xl border border-white/10 bg-black/35 p-4 backdrop-blur transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)]">
       <button type="button" onClick={() => onOpen(project)} className="w-full text-left">
+        {/* Bildyta med färgton som sätter känslan för projektet. */}
+        {/* Mindre höjd på små skärmar, lite större på större skärmar. */}
         <div
           className={`flex h-32 items-end rounded-2xl border border-white/10 bg-gradient-to-br p-4 sm:h-40 ${project.gradient}`}
         >

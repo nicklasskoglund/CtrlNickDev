@@ -1,3 +1,4 @@
+// Toppmenyn med logga, språk och mobilmeny.
 import { useState } from "react";
 
 export default function Navbar({
@@ -9,15 +10,19 @@ export default function Navbar({
   onToggleLang,
   onScrollTo
 }) {
+  // Håller koll på om mobilmenyn är öppen.
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Skrollar till vald sektion och stänger mobilmenyn.
   const handleNavClick = (id) => {
     onScrollTo(id);
     setMenuOpen(false);
   };
 
   return (
+    // Fast meny som ligger ovanför innehåll.
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-lg">
+      {/* Maxbredd och luft i sidled. */}
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <button
           type="button"
@@ -26,6 +31,7 @@ export default function Navbar({
         >
           CtrlNick<span className="text-cyan-300">Dev</span>
         </button>
+        {/* Meny visas på mellanstora skärmar och uppåt. */}
         <div className="hidden items-center gap-5 md:flex">
           {navItems.map((item) => {
             const active = activeId === item.id;
@@ -43,6 +49,7 @@ export default function Navbar({
             );
           })}
         </div>
+        {/* Mindre mellanrum på små skärmar, mer på större. */}
         <div className="flex items-center gap-2 md:gap-4">
           <button
             type="button"
@@ -51,6 +58,7 @@ export default function Navbar({
           >
             {lang === "sv" ? "EN" : "SV"}
           </button>
+          {/* Mobilknapp som bara syns på små skärmar. */}
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -62,6 +70,7 @@ export default function Navbar({
           </button>
         </div>
       </nav>
+      {/* Meny för små skärmar. */}
       {menuOpen ? (
         <div className="border-t border-white/10 bg-slate-950/90 px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">

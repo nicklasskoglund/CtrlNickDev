@@ -1,5 +1,7 @@
 ﻿export const sections = ["home", "about", "education", "stack", "projects", "activity", "contact"];
 
+// Används för menyn och för att hitta sektionerna på sidan.
+// Alla texter på svenska och engelska.
 export const translations = {
   sv: {
     nav: {
@@ -350,6 +352,7 @@ export const translations = {
   }
 };
 
+// Listor som visas i kompetens-sektionen.
 export const stackGroups = {
   languages: ["Python", "JavaScript", "TypeScript", "HTML", "CSS", "SQL"],
   frontend: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
@@ -357,6 +360,7 @@ export const stackGroups = {
   tools: ["Git", "GitHub", "DBeaver", "VS Code", "PyCharm", "Agile Methods", "Self-leadership"]
 };
 
+// Bilder och länkar som visas i GitHub-sektionen.
 export const activityLinks = [
   {
     id: "awesome-stats",
@@ -372,6 +376,7 @@ export const activityLinks = [
   }
 ];
 
+// Kontaktlänkar som visas i kontaktdelen.
 export const contactLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nicklas-skoglund-68650659/" },
   { label: "GitHub", href: "https://github.com/nicklasskoglund" },

@@ -1,11 +1,14 @@
+/* Typsnitt och grundstilar för hela sidan. */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 :root {
+  /* Grundinställningar som gäller överallt. */
   color-scheme: dark;
   font-family: "Space Grotesk", "Chakra Petch", system-ui, sans-serif;
 }
 
+/* Ser till att sidan alltid fyller skärmen. */
 html,
 body,
 #root {
@@ -13,10 +16,12 @@ body,
 }
 
 html {
+  /* Mjuk skrollning mellan sektioner. */
   scroll-behavior: smooth;
 }
 
 body {
+  /* Bakgrund och grundmarginaler. */
   margin: 0;
   min-height: 100vh;
   background: #020617;

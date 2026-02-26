@@ -1,8 +1,10 @@
 ﻿import { motion } from "framer-motion";
 
+// Återanvändbar sektion med rubrik och innehåll.
 export default function Section({ id, title, children, className = "" }) {
   return (
     <section id={id} className={`scroll-mt-28 ${className}`}>
+      {/* Enkel in-animation när sektionen syns. */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
