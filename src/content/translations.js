@@ -87,6 +87,20 @@ export const translations = {
       details: "Mer info",
       items: [
         {
+          id: "ctrlnickdev",
+          name: "CtrlNickDev",
+          description:
+            "Personlig portfoliosida som presenterar projekt, utbildning, tech‑stack och kontaktlänkar i en ren one‑pager.",
+          tags: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Formspree"],
+          github: "https://github.com/nicklasskoglund/CtrlNickDev",
+          highlights: [
+            "One‑page layout med smidig sektion‑navigation",
+            "Svensk/engelsk språkväxling",
+            "Projektkort med modaler och detaljer"
+          ],
+          gradient: "from-emerald-500/30 via-cyan-500/20 to-slate-900"
+        },
+        {
           id: "stocksimulator",
           name: "StockSimulator",
           description:
@@ -246,6 +260,20 @@ export const translations = {
       close: "Close",
       details: "More info",
       items: [
+        {
+          id: "ctrlnickdev",
+          name: "CtrlNickDev",
+          description:
+            "Personal portfolio site built to present projects, education, tech stack, and contact links in a clean one-page layout.",
+          tags: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Formspree"],
+          github: "https://github.com/nicklasskoglund/CtrlNickDev",
+          highlights: [
+            "One-page portfolio with smooth section navigation",
+            "Swedish and English language toggle",
+            "Project cards with detailed modal views"
+          ],
+          gradient: "from-emerald-500/30 via-cyan-500/20 to-slate-900"
+        },
         {
           id: "stocksimulator",
           name: "StockSimulator",
