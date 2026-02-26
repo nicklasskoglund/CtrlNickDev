@@ -9,7 +9,7 @@ export default function Section({ id, title, children, className = "" }) {
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        {title ? <h2 className="text-3xl font-semibold text-white">{title}</h2> : null}
+        {title ? <h2 className="text-2xl font-semibold text-white sm:text-3xl">{title}</h2> : null}
         {children}
       </motion.div>
     </section>
