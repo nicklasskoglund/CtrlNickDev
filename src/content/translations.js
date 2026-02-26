@@ -8,8 +8,10 @@ export const translations = {
       education: "Utbildning",
       stack: "Kompetenser",
       projects: "Projekt",
-      activity: "Aktivitet",
-      contact: "Kontakt"
+      activity: "GitHub",
+      contact: "Kontakt",
+      menu: "Meny",
+      close: "Stäng"
     },
     hero: {
       greeting: "Nicklas Skoglund",
@@ -140,10 +142,10 @@ export const translations = {
       ]
     },
     activity: {
-      title: "Aktivitet",
+      title: "GitHub",
       cards: {
-        "awesome-stats": "GitHub‑statistik",
-        ghchart: "Contribution graph"
+        "awesome-stats": "Nyckeltal",
+        ghchart: "Commit-flöde"
       }
     },
     contact: {
@@ -166,8 +168,10 @@ export const translations = {
       education: "Education",
       stack: "Stack",
       projects: "Projects",
-      activity: "Activity",
-      contact: "Contact"
+      activity: "GitHub",
+      contact: "Contact",
+      menu: "Menu",
+      close: "Close"
     },
     hero: {
       greeting: "Nicklas Skoglund",
@@ -175,7 +179,7 @@ export const translations = {
       intro:
         "AI Developer student • Debug Mode: ON — coffee addict, gamer, sports fanatic, and music nerd building things that work with Python, web, and AI: from patterns and insights to solutions I can ship and improve.",
       noticeLabel: "Notice",
-      notice: "Open to internship / LIA from November 2026",
+      notice: "Open to internship from November 2026",
       viewProjects: "View projects",
       contact: "Contact"
     },
@@ -298,10 +302,10 @@ export const translations = {
       ]
     },
     activity: {
-      title: "Activity",
+      title: "GitHub",
       cards: {
-        "awesome-stats": "GitHub stats",
-        ghchart: "Contribution graph"
+        "awesome-stats": "Key metrics",
+        ghchart: "Commit flow"
       }
     },
     contact: {
