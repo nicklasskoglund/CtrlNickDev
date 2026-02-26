@@ -23,7 +23,7 @@ function FormspreeForm({ formId, t }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-white/10 bg-black/35 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)]"
+      className="rounded-3xl border border-white/10 bg-black/35 p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)] sm:p-6"
     >
       {state.succeeded ? (
         <p className="text-sm text-emerald-300">{t.contact.thanks}</p>
@@ -122,12 +122,29 @@ export default function App() {
         navItems={navItems}
         activeId={activeSection}
         lang={lang}
+        menuLabel={t.nav.menu}
+        closeLabel={t.nav.close}
         onToggleLang={() => setLang((prev) => (prev === "sv" ? "en" : "sv"))}
         onScrollTo={scrollToSection}
       />
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-32 px-4 pb-24 pt-14 md:px-6">
-        <section id="home" className="scroll-mt-28 relative min-h-screen">
+      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-16 pt-10 md:gap-32 md:px-6 md:pb-24 md:pt-14">
+        <section
+          id="home"
+          className="scroll-mt-28 flex min-h-screen flex-col items-center gap-6 pb-10 pt-4 text-center sm:gap-8 sm:pb-12 sm:pt-6 md:gap-10 md:pb-16 [@media(max-height:700px)]:gap-4 [@media(max-height:700px)]:pb-8 [@media(max-height:700px)]:pt-2"
+        >
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            initial="hidden"
+            animate="show"
+            className="w-full px-4"
+          >
+            <div className="mx-auto max-w-xl rounded-3xl border border-cyan-300/35 bg-cyan-500/10 p-5 text-center">
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan-100">{t.hero.noticeLabel}</p>
+              <p className="mt-3 text-xl font-medium text-white">{t.hero.notice}</p>
+            </div>
+          </motion.div>
+
           <motion.div
             initial="hidden"
             animate="show"
@@ -135,41 +152,35 @@ export default function App() {
               hidden: { opacity: 0, y: 25 },
               show: { opacity: 1, y: 0, transition: { staggerChildren: 0.1, duration: 0.5 } }
             }}
-            className="flex min-h-screen flex-col items-center justify-center pb-16 text-center"
+            className="flex w-full flex-1 flex-col items-center justify-center px-4"
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}>
-              <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">{t.hero.greeting}</h1>
-              <p className="mt-4 max-w-2xl text-sm text-slate-400 md:text-base">{t.hero.tagline}</p>
-              <p className="mt-4 max-w-2xl text-base text-slate-300 md:text-lg">{t.hero.intro}</p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-6xl">
+                {t.hero.greeting}
+              </h1>
+              <p className="mt-3 max-w-2xl text-xs text-slate-400 sm:text-sm md:text-base [@media(max-height:700px)]:mt-2">
+                {t.hero.tagline}
+              </p>
+              <p className="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base md:text-lg [@media(max-height:700px)]:mt-2">
+                {t.hero.intro}
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-2 sm:mt-8 sm:gap-3 [@media(max-height:700px)]:mt-4">
                 <button
                   type="button"
                   onClick={() => scrollToSection("projects")}
-                  className="rounded-full border border-white/15 bg-cyan-400/10 px-6 py-3 text-sm uppercase tracking-[0.2em] text-cyan-100 hover:border-cyan-300 hover:bg-cyan-400/20"
+                  className="rounded-full border border-white/15 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100 hover:border-cyan-300 hover:bg-cyan-400/20 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   {t.hero.viewProjects}
                 </button>
                 <button
                   type="button"
                   onClick={() => scrollToSection("contact")}
-                  className="rounded-full border border-white/15 bg-cyan-400/10 px-6 py-3 text-sm uppercase tracking-[0.2em] text-cyan-100 hover:border-cyan-300 hover:bg-cyan-400/20"
+                  className="rounded-full border border-white/15 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100 hover:border-cyan-300 hover:bg-cyan-400/20 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   {t.hero.contact}
                 </button>
               </div>
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-            initial="hidden"
-            animate="show"
-            className="absolute left-1/2 top-24 w-full -translate-x-1/2 px-4"
-          >
-            <div className="mx-auto max-w-xl rounded-3xl border border-cyan-300/35 bg-cyan-500/10 p-5 text-center">
-              <p className="text-xs uppercase tracking-[0.3em] text-cyan-100">{t.hero.noticeLabel}</p>
-              <p className="mt-3 text-xl font-medium text-white">{t.hero.notice}</p>
-            </div>
           </motion.div>
         </section>
 
@@ -178,12 +189,12 @@ export default function App() {
           title={t.about.title}
           className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-10"
         >
-          <div className="mt-6 grid gap-8 md:grid-cols-[300px_1fr] md:items-center">
-            <div className="mx-auto w-56 overflow-hidden rounded-3xl border border-white/10 bg-black/35 md:mx-0 md:w-[300px]">
+          <div className="mt-6 grid gap-6 md:gap-8 md:grid-cols-[300px_1fr] md:items-center">
+            <div className="mx-auto w-48 overflow-hidden rounded-3xl border border-white/10 bg-black/35 sm:w-56 md:mx-0 md:w-[300px]">
               <img
                 src={profileImage}
                 alt={t.about.title}
-                className="h-56 w-full object-cover md:h-[300px]"
+                className="h-48 w-full object-cover sm:h-56 md:h-[300px]"
                 loading="lazy"
               />
             </div>
@@ -291,7 +302,7 @@ export default function App() {
                   <img
                     src={item.image}
                     alt={t.activity.cards[item.id] ?? item.title}
-                    className="w-full"
+                    className="h-auto w-full object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -306,7 +317,7 @@ export default function App() {
           className="rounded-3xl border border-white/10 bg-slate-900/50 p-6 md:p-10"
         >
           <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <article className="rounded-3xl border border-white/10 bg-black/35 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)]">
+            <article className="rounded-3xl border border-white/10 bg-black/35 p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)] sm:p-6">
               <div className="space-y-4">
                 {contactLinks.map((item) => (
                   <a
@@ -328,7 +339,7 @@ export default function App() {
             {formId ? (
               <FormspreeForm formId={formId} t={t} />
             ) : (
-              <article className="rounded-3xl border border-white/10 bg-black/35 p-6 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)]">
+              <article className="rounded-3xl border border-white/10 bg-black/35 p-4 transition-transform duration-200 hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_20px_40px_-20px_rgba(34,211,238,0.45)] sm:p-6">
                 <p className="text-sm text-slate-300">{t.contact.formHint}</p>
               </article>
             )}
